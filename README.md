@@ -410,7 +410,4 @@ flowchart TD
 - `JWT_SECRET=<stored-in-secrets-manager>`
 - `AWS_REGION=ap-south-1`
 
-
-
-
-HR
+**rm on edit**
