@@ -50,21 +50,35 @@ The project studies HRMS and Workforce Management systems commonly used in SMEs 
 - Payroll data integration with attendance and overtime
 
 ### 2.2 Reference Areas Studied
-- HRIS/HRMS architecture patterns (modular and service-oriented)
-- Attendance computation rules (full day/half day/absent/late/overtime)
-- Secure authentication methods (JWT, session handling)
-- Database design for transactional consistency and reporting
-- Auditability and compliance in HR data systems
+- Kavanagh and Johnson (2017) stated that HRMS is an integrated system used to collect, store, and manage employee information. Their study concluded that HRMS improves efficiency, reduces paperwork, and supports better organizational decision-making.
 
-### 2.3 Findings from Survey
-- Modular architecture improves maintainability and independent scaling
-- Attendance modules require configurable policies (shift-wise rules)
-- Approval workflows need strict role-based controls and notifications
-- Reporting performance depends heavily on indexed schemas and summary tables
-- Security and traceability are mandatory for enterprise HR tools
+- Gary Dessler (2017) explained that HRMS helps manage core HR functions such as recruitment, payroll, performance evaluation, and employee records. He emphasized that HRMS reduces administrative workload and improves HR productivity.
+
+- Michael Armstrong (2014) highlighted that HRMS improves organizational performance by maintaining accurate employee data and supporting performance monitoring and employee development.
+
+- Navaz et al. (2013) developed a computerized HRMS and found that it improves data accuracy, reduces manual work, and enhances HR operational efficiency.
+
+- Beadles et al. (2005) studied the impact of HRMS on organizations and concluded that HRMS reduces operational costs, improves efficiency, and enhances employee management.
+
+- Hendrickson (2003) stated that HRMS improves workforce planning and employee data management by providing accurate and timely information.
+
+- Troshani et al. (2011) found that HRMS improves communication, information accessibility, and HR decision-making in organizations.
+
+- Parry and Tyson (2011) concluded that HRMS improves recruitment, performance management, and employee engagement through automation and digital technology.
+
+### 2.3 Limitations of existing systems
+Although HRMS provides many benefits, previous studies have identified some limitations:
+
+- Some systems are complex and difficult to use.
+- Traditional systems lack user-friendly interfaces.
+- Limited accessibility and integration with modern technologies.
+- Some systems do not provide real-time data updates.
+- High implementation and maintenance cost in some cases.
 
 ### 2.4 Gap Identified
-Existing lightweight tools often provide isolated functions (only leave or only attendance). The identified gap is an integrated HR solution combining onboarding, attendance, leave, and salary with consistent workflows and shared employee master data.
+
+From the literature survey, it is observed that HRMS improves efficiency, reduces manual work, and enhances decision-making. However, some existing systems lack user-friendly design, real-time access, and modern features. Therefore, there is a need to develop an improved HRMS that provides better usability, efficient data management, and enhanced performance.
+
 
 ---
 
@@ -395,3 +409,5 @@ flowchart TD
 - `DB_NAME=hr_management`
 - `JWT_SECRET=<stored-in-secrets-manager>`
 - `AWS_REGION=ap-south-1`
+
+**rm on edit**
