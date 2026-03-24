@@ -251,9 +251,8 @@ gantt
 | Team Member | Role | Key Responsibilities | Deliverables |
 |---|---|---|---|
 | Siddharth Singh | Project Lead / Backend Coordinator | Architecture decisions, API standards, integration oversight | Architecture doc, integrated backend services |
-| Nice | Attendance Module Developer | Punch In/Out, break tracking, corrections, overtime, reports | Attendance APIs, business rules, test cases |
+| Priyanka | Attendance Module Developer | Punch In/Out, break tracking, corrections, overtime, reports | Attendance APIs, business rules, test cases |
 | Om Mishra | Leave & Onboarding Developer | Leave workflows, onboarding tracking, policy validations | Leave/Onboarding APIs, workflow documentation |
-| Priyanka | Frontend & UX Developer + QA & Documentation | Dashboard and module interfaces, form validations, role-based views, test planning, defect tracking, and final documentation | UI screens, frontend integration, test report, user manual, proposal/final report |
 
 > Note: Add registration numbers next to names in the final print copy.
 
