@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset="utf-8"><title>README</title><style>body{margin:24px;font-family:monospace;} pre{white-space:pre-wrap;word-wrap:break-word;font-size:12px;line-height:1.4;}</style></head><body><pre>
 # HR Management Portal – Project Proposal
 
 ## 1) Detailed Description of the Project
@@ -41,33 +42,33 @@ flowchart LR
 		H[HR Admin]
 		S[(HR Management Portal)]
 
-		E --> U1[Login]
-		E --> U2[Punch In/Out]
-		E --> U3[Apply Leave]
-		E --> U4[Request Attendance Correction]
-		E --> U5[View Salary Slip]
+		E --&gt; U1[Login]
+		E --&gt; U2[Punch In/Out]
+		E --&gt; U3[Apply Leave]
+		E --&gt; U4[Request Attendance Correction]
+		E --&gt; U5[View Salary Slip]
 
-		M --> U6[Approve/Reject Leave]
-		M --> U7[Approve/Reject Corrections]
-		M --> U8[View Team Attendance]
+		M --&gt; U6[Approve/Reject Leave]
+		M --&gt; U7[Approve/Reject Corrections]
+		M --&gt; U8[View Team Attendance]
 
-		H --> U9[Manage Onboarding]
-		H --> U10[Configure Shifts/Policies]
-		H --> U11[Run Monthly Reports]
-		H --> U12[Process Payroll]
+		H --&gt; U9[Manage Onboarding]
+		H --&gt; U10[Configure Shifts/Policies]
+		H --&gt; U11[Run Monthly Reports]
+		H --&gt; U12[Process Payroll]
 
-		U1 --> S
-		U2 --> S
-		U3 --> S
-		U4 --> S
-		U5 --> S
-		U6 --> S
-		U7 --> S
-		U8 --> S
-		U9 --> S
-		U10 --> S
-		U11 --> S
-		U12 --> S
+		U1 --&gt; S
+		U2 --&gt; S
+		U3 --&gt; S
+		U4 --&gt; S
+		U5 --&gt; S
+		U6 --&gt; S
+		U7 --&gt; S
+		U8 --&gt; S
+		U9 --&gt; S
+		U10 --&gt; S
+		U11 --&gt; S
+		U12 --&gt; S
 ```
 
 ### 1.7 Expected Outcomes
@@ -82,7 +83,7 @@ flowchart LR
 
 ### 2.1 Domain Review
 The project studies HRMS and Workforce Management systems commonly used in SMEs and enterprises. Key focus areas include:
-- Time & Attendance tracking models
+- Time &amp; Attendance tracking models
 - Leave policy automation
 - Role-based approval workflows
 - Payroll data integration with attendance and overtime
@@ -199,7 +200,7 @@ erDiagram
 
 ## 4) Project Roadmap
 
-### Phase 1: Requirement Analysis & Planning (Week 1)
+### Phase 1: Requirement Analysis &amp; Planning (Week 1)
 - Finalize scope, user roles, functional requirements, and business rules
 - Define acceptance criteria and module boundaries
 
@@ -214,12 +215,12 @@ erDiagram
 - Develop Attendance (Punch In/Out, Breaks, Corrections, Overtime)
 - Develop Salary management basics
 
-### Phase 4: Integration & Testing (Weeks 7–8)
+### Phase 4: Integration &amp; Testing (Weeks 7–8)
 - Module integration and end-to-end flow validation
 - Unit testing, integration testing, and bug fixes
 - Performance tuning for reports and queries
 
-### Phase 5: Documentation & Final Review (Week 9)
+### Phase 5: Documentation &amp; Final Review (Week 9)
 - Prepare technical documentation and user guide
 - Demo preparation and final submission package
 
@@ -251,8 +252,11 @@ gantt
 | Team Member | Role | Key Responsibilities | Deliverables |
 |---|---|---|---|
 | Siddharth Singh | Project Lead / Backend Coordinator | Architecture decisions, API standards, integration oversight | Architecture doc, integrated backend services |
-| Priyanka | Attendance Module Developer | Punch In/Out, break tracking, corrections, overtime, reports | Attendance APIs, business rules, test cases |
-| Om Mishra | Leave & Onboarding Developer | Leave workflows, onboarding tracking, policy validations | Leave/Onboarding APIs, workflow documentation |
+| Nice | Attendance Module Developer | Punch In/Out, break tracking, corrections, overtime, reports | Attendance APIs, business rules, test cases |
+| Om Mishra | Leave &amp; Onboarding Developer | Leave workflows, onboarding tracking, policy validations | Leave/Onboarding APIs, workflow documentation |
+| Priyanka | Frontend &amp; UX Developer + QA &amp; Documentation | Dashboard and module interfaces, form validations, role-based views, test planning, defect tracking, and final documentation | UI screens, frontend integration, test report, user manual, proposal/final report |
+
+&gt; Note: Add registration numbers next to names in the final print copy.
 
 ---
 
@@ -265,10 +269,10 @@ gantt
 - API testing and collaboration tools
 
 ### 6.2 Proposed Timeline Snapshot
-- Planning & analysis: 1 week
+- Planning &amp; analysis: 1 week
 - Design: 1 week
 - Development: 4 weeks
-- Testing & integration: 2 weeks
+- Testing &amp; integration: 2 weeks
 - Finalization: 1 week
 
 Total duration: **~9 weeks**
@@ -280,7 +284,7 @@ Total duration: **~9 weeks**
 | Requirement changes mid-development | Scope creep, delays | Freeze MVP scope early, track changes via change log |
 | Integration conflicts across modules | Rework and instability | Shared API contracts, frequent integration checks |
 | Data inconsistency in HR records | Incorrect reports/payroll | Strong validation rules, relational constraints, audit logs |
-| Security vulnerabilities | Data exposure risk | JWT auth, role checks, secure config, logging & monitoring |
+| Security vulnerabilities | Data exposure risk | JWT auth, role checks, secure config, logging &amp; monitoring |
 | Time constraints before submission | Incomplete deliverables | Weekly milestones, priority-based backlog, parallel development |
 
 ### 6.4 Quality and Compliance Considerations
@@ -299,13 +303,13 @@ Total duration: **~9 weeks**
 
 ```mermaid
 flowchart TD
-		U[Users] --> CF[CloudFront]
-		CF --> S3[S3 Static Frontend]
-		U --> APIGW[API Gateway]
-		APIGW --> APP[Spring Boot Service on AWS Lambda/EC2]
-		APP --> RDS[(Amazon RDS MySQL/PostgreSQL)]
-		APP --> CW[CloudWatch Logs]
-		APP --> SM[Secrets Manager]
+		U[Users] --&gt; CF[CloudFront]
+		CF --&gt; S3[S3 Static Frontend]
+		U --&gt; APIGW[API Gateway]
+		APIGW --&gt; APP[Spring Boot Service on AWS Lambda/EC2]
+		APP --&gt; RDS[(Amazon RDS MySQL/PostgreSQL)]
+		APP --&gt; CW[CloudWatch Logs]
+		APP --&gt; SM[Secrets Manager]
 ```
 
 **Deployment Outcome**: Scalable, secure, and production-ready cloud deployment aligned with enterprise practices.
@@ -336,7 +340,7 @@ Request:
 ```http
 POST /api/attendance/punch-in
 Content-Type: application/json
-Authorization: Bearer <jwt-token>
+Authorization: Bearer &lt;jwt-token&gt;
 
 {
 	"employeeId": "EMP001",
@@ -361,7 +365,7 @@ Response:
 Request:
 ```http
 GET /api/attendance/status?employeeId=EMP001
-Authorization: Bearer <jwt-token>
+Authorization: Bearer &lt;jwt-token&gt;
 ```
 
 Response:
@@ -399,8 +403,9 @@ Response:
 ```
 
 ### 8.3 Environment (AWS) – Proposed
-- `DB_HOST=<rds-endpoint>`
+- `DB_HOST=&lt;rds-endpoint&gt;`
 - `DB_PORT=3306`
 - `DB_NAME=hr_management`
-- `JWT_SECRET=<stored-in-secrets-manager>`
+- `JWT_SECRET=&lt;stored-in-secrets-manager&gt;`
 - `AWS_REGION=ap-south-1`
+</pre></body></html>

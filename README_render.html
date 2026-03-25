@@ -1,3 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HR Management Portal - README</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; margin: 32px; color: #24292f; }
+    .markdown-body { max-width: 980px; margin: 0 auto; line-height: 1.55; }
+    h1, h2, h3, h4 { margin-top: 24px; margin-bottom: 12px; }
+    p, ul, ol { margin: 8px 0 12px; }
+    code { background: #f6f8fa; padding: 0.15em 0.35em; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 8px; overflow: auto; }
+    pre code { background: transparent; padding: 0; }
+    table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 0.95rem; }
+    th, td { border: 1px solid #d0d7de; padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) td { background: #fcfcfd; }
+    hr { border: 0; border-top: 1px solid #d0d7de; margin: 24px 0; }
+    .mermaid { background: #fff; border: 1px solid #d0d7de; border-radius: 8px; padding: 12px; margin: 14px 0; }
+    @page { size: A4; margin: 16mm; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <article id="content" class="markdown-body"></article>
+  <script id="md-source" type="text/plain">
 # HR Management Portal – Project Proposal
 
 ## 1) Detailed Description of the Project
@@ -251,8 +279,9 @@ gantt
 | Team Member | Role | Key Responsibilities | Deliverables |
 |---|---|---|---|
 | Siddharth Singh | Project Lead / Backend Coordinator | Architecture decisions, API standards, integration oversight | Architecture doc, integrated backend services |
-| Priyanka | Attendance Module Developer | Punch In/Out, break tracking, corrections, overtime, reports | Attendance APIs, business rules, test cases |
+| Nice | Attendance Module Developer | Punch In/Out, break tracking, corrections, overtime, reports | Attendance APIs, business rules, test cases |
 | Om Mishra | Leave & Onboarding Developer | Leave workflows, onboarding tracking, policy validations | Leave/Onboarding APIs, workflow documentation |
+| Priyanka | Frontend & UX Developer + QA & Documentation | Dashboard and module interfaces, form validations, role-based views, test planning, defect tracking, and final documentation | UI screens, frontend integration, test report, user manual, proposal/final report |
 
 ---
 
@@ -404,3 +433,22 @@ Response:
 - `DB_NAME=hr_management`
 - `JWT_SECRET=<stored-in-secrets-manager>`
 - `AWS_REGION=ap-south-1`
+  </script>
+  <script>
+    (async function () {
+      const markdown = document.getElementById('md-source').textContent;
+      const html = marked.parse(markdown, { gfm: true, breaks: false, mangle: false, headerIds: true });
+      const content = document.getElementById('content');
+      content.innerHTML = html;
+      content.querySelectorAll('pre > code.language-mermaid').forEach((block) => {
+        const container = document.createElement('div');
+        container.className = 'mermaid';
+        container.textContent = block.textContent;
+        block.parentElement.replaceWith(container);
+      });
+      mermaid.initialize({ startOnLoad: false, securityLevel: 'loose', theme: 'default' });
+      await mermaid.run({ nodes: content.querySelectorAll('.mermaid') });
+    })();
+  </script>
+</body>
+</html>
