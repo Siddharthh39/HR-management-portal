@@ -1,0 +1,56 @@
+README_editable.docx
+README_preserved.pdf
+README_render_static.docx
+README_render_static.html
+README.docx
+backend/punch_in_out/myenv
+
+# Environment and secrets
+backend/.env
+**/.env
+
+# Python caches and virtual environments
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+**/venv/
+**/myenv/
+
+# Python build and packaging artifacts
+**/build/
+**/dist/
+**/*.egg-info/
+**/.eggs/
+**/pip-wheel-metadata/
+
+# Test and coverage artifacts
+**/.coverage
+**/.coverage.*
+**/htmlcov/
+**/coverage.xml
+
+# Logs and runtime artifacts
+**/*.log
+**/*.pid
+
+# Local databases
+**/*.db
+**/*.sqlite3
+
+# Frontend dependency artifacts
+**/node_modules/
+**/npm-debug.log*
+**/yarn-debug.log*
+**/pnpm-debug.log*
+
+# Editor and OS files
+.vscode/
+.idea/
+**/.DS_Store
+**/Thumbs.db
+
+# Archives and local bundles
+*.zip
