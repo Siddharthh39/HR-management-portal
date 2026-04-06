@@ -1,0 +1,169 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: HR Management Portal backend with one Lambda per feature service.
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 30
+    MemorySize: 512
+    Architectures:
+      - x86_64
+
+Resources:
+  HrHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: prod
+      CorsConfiguration:
+        AllowOrigins:
+          - "*"
+        AllowMethods:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+          - OPTIONS
+        AllowHeaders:
+          - "*"
+
+  AdminUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: admin_user/
+      Handler: app.lambda_handler.handler
+      Description: Admin and user management API service.
+      Environment:
+        Variables:
+          API_BASE_PATH: /admin-user
+      Events:
+        AdminUserRoot:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /admin-user
+            Method: ANY
+        AdminUserProxy:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /admin-user/{proxy+}
+            Method: ANY
+
+  LeaveRequestFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: leave_req_submission/
+      Handler: app.lambda_handler.handler
+      Description: Leave request submission API service.
+      Environment:
+        Variables:
+          API_BASE_PATH: /leave-requests
+      Events:
+        LeaveRequestRoot:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /leave-requests
+            Method: ANY
+        LeaveRequestProxy:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /leave-requests/{proxy+}
+            Method: ANY
+
+  OnboardingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: onbording/
+      Handler: app.lambda_handler.handler
+      Description: Employee onboarding API service.
+      Environment:
+        Variables:
+          API_BASE_PATH: /onboarding
+      Events:
+        OnboardingRoot:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /onboarding
+            Method: ANY
+        OnboardingProxy:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /onboarding/{proxy+}
+            Method: ANY
+
+  PunchInOutFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: punch_in_out/
+      Handler: app.lambda_handler.handler
+      Description: Punch in and punch out API service.
+      Environment:
+        Variables:
+          API_BASE_PATH: /punch-in-out
+      Events:
+        PunchInOutRoot:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /punch-in-out
+            Method: ANY
+        PunchInOutProxy:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /punch-in-out/{proxy+}
+            Method: ANY
+
+  SalaryManagementFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: salary_management/
+      Handler: app.lambda_handler.handler
+      Description: Salary management API service.
+      Environment:
+        Variables:
+          API_BASE_PATH: /salary-management
+      Events:
+        SalaryManagementRoot:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /salary-management
+            Method: ANY
+        SalaryManagementProxy:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /salary-management/{proxy+}
+            Method: ANY
+
+Outputs:
+  HrHttpApiEndpoint:
+    Description: Base URL for the HR HTTP API stage.
+    Value: !Sub "https://${HrHttpApi}.execute-api.${AWS::Region}.amazonaws.com/prod"
+
+  AdminUserBasePath:
+    Description: Base path for admin user APIs.
+    Value: /admin-user
+
+  LeaveRequestBasePath:
+    Description: Base path for leave request APIs.
+    Value: /leave-requests
+
+  OnboardingBasePath:
+    Description: Base path for onboarding APIs.
+    Value: /onboarding
+
+  PunchInOutBasePath:
+    Description: Base path for punch in/out APIs.
+    Value: /punch-in-out
+
+  SalaryManagementBasePath:
+    Description: Base path for salary management APIs.
+    Value: /salary-management

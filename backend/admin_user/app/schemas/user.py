@@ -1,13 +1,13 @@
 from datetime import datetime
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from app.schemas.permission import PermissionOut
 
 
 class UserCreate(BaseModel):
     full_name: str = Field(min_length=2, max_length=100)
-    email: EmailStr
+    email: str = Field(min_length=3, max_length=255)
     password_hash: str = Field(min_length=8, max_length=255)
     status: str = Field(default="active", max_length=30)
     is_admin: bool = False
@@ -23,7 +23,7 @@ class UserOut(BaseModel):
 
     id: int
     full_name: str
-    email: EmailStr
+    email: str
     status: str
     is_admin: bool
     created_at: datetime
@@ -36,5 +36,5 @@ class UserActor(BaseModel):
 
     id: int
     full_name: str
-    email: EmailStr
+    email: str
     is_admin: bool
