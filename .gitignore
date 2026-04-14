@@ -45,6 +45,20 @@ backend/.env
 **/npm-debug.log*
 **/yarn-debug.log*
 **/pnpm-debug.log*
+**/.vite/
+
+# SAM and deployment artifacts
+backend/.aws-sam/
+backend/.sam-venv/
+
+# Frontend local env and build output
+frontend/.env.local
+frontend/.env.*.local
+frontend/dist/
+
+# Workspace scratch files
+**/del.txt
+**/del copy.txt
 
 # Editor and OS files
 .vscode/
