@@ -99,9 +99,9 @@ sam deploy --guided
 
 - Region: `ap-south-1`
 - HTTP API ID: `rkskrnxx50`
-- Base URL: `https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com`
+- **Base URL:** `https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/prod`
 
-Use the `$default` stage base URL above (no `/prod` prefix).
+All service endpoints use the base URL above with the service prefix (e.g., `/admin-user`, `/leave-requests`, etc.).
 
 ## API base paths
 
@@ -142,19 +142,19 @@ Query parameters for `GET /{prefix}/db/query`:
 
 ```bash
 # List tables
-curl "https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/leave-requests/db/tables"
+curl "https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/prod/leave-requests/db/tables"
 
 # Query users table
-curl "https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/leave-requests/db/query?table=users&limit=10&order_by=id&order_dir=asc"
+curl "https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/prod/leave-requests/db/query?table=users&limit=10&order_by=id&order_dir=asc"
 
 # Query with filters
-curl "https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/punch-in-out/db/query?table=users&filters=is_admin:1"
+curl "https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/prod/punch-in-out/db/query?table=users&filters=is_admin:1"
 
 # Query a single record by id column
-curl "https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/salary-management/db/query/users/1?id_column=id"
+curl "https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/prod/salary-management/db/query/users/1?id_column=id"
 
 # Admin users endpoint (requires header)
-curl -H "X-Actor-Email: admin@hr.local" "https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/admin-user/users"
+curl -H "X-Actor-Email: admin@hr.local" "https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/prod/admin-user/users"
 ```
 
 ## Safety Notes
@@ -167,7 +167,7 @@ curl -H "X-Actor-Email: admin@hr.local" "https://rkskrnxx50.execute-api.ap-south
 ## API Health Quick Check
 
 ```bash
-API_BASE="https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com"
+API_BASE="https://rkskrnxx50.execute-api.ap-south-1.amazonaws.com/prod"
 curl "$API_BASE/admin-user/health"
 curl "$API_BASE/leave-requests/health"
 curl "$API_BASE/onboarding/health"

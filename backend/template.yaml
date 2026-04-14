@@ -4,11 +4,21 @@ Description: HR Management Portal backend with one Lambda per feature service.
 
 Globals:
   Function:
-    Runtime: python3.12
+    Runtime: python3.14
     Timeout: 30
     MemorySize: 512
     Architectures:
       - x86_64
+    Environment:
+      Variables:
+        MYSQL_HOST: management.ctqigesoqgvs.ap-south-1.rds.amazonaws.com
+        MYSQL_PORT: "3306"
+        MYSQL_USER: admin
+        MYSQL_PASSWORD: BamBoo123
+        MYSQL_DATABASE: hr_management
+        AUTO_CREATE_TABLES: "false"
+        ADMIN_BOOTSTRAP_EMAIL: admin@hr.local
+        ADMIN_BOOTSTRAP_PASSWORD: ChangeMe123!
 
 Resources:
   HrHttpApi:
@@ -36,20 +46,32 @@ Resources:
       Description: Admin and user management API service.
       Environment:
         Variables:
-          API_BASE_PATH: /admin-user
+          API_BASE_PATH: /prod/admin-user
       Events:
         AdminUserRoot:
           Type: HttpApi
           Properties:
             ApiId: !Ref HrHttpApi
             Path: /admin-user
-            Method: ANY
+            Method: GET
+        AdminUserRootPost:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /admin-user
+            Method: POST
         AdminUserProxy:
           Type: HttpApi
           Properties:
             ApiId: !Ref HrHttpApi
             Path: /admin-user/{proxy+}
-            Method: ANY
+            Method: GET
+        AdminUserProxyPost:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HrHttpApi
+            Path: /admin-user/{proxy+}
+            Method: POST
 
   LeaveRequestFunction:
     Type: AWS::Serverless::Function
@@ -59,20 +81,20 @@ Resources:
       Description: Leave request submission API service.
       Environment:
         Variables:
-          API_BASE_PATH: /leave-requests
+          API_BASE_PATH: /prod/leave-requests
       Events:
         LeaveRequestRoot:
           Type: HttpApi
           Properties:
             ApiId: !Ref HrHttpApi
             Path: /leave-requests
-            Method: ANY
+            Method: GET
         LeaveRequestProxy:
           Type: HttpApi
           Properties:
             ApiId: !Ref HrHttpApi
             Path: /leave-requests/{proxy+}
-            Method: ANY
+            Method: GET
 
   OnboardingFunction:
     Type: AWS::Serverless::Function
@@ -82,20 +104,20 @@ Resources:
       Description: Employee onboarding API service.
       Environment:
         Variables:
-          API_BASE_PATH: /onboarding
+          API_BASE_PATH: /prod/onboarding
       Events:
         OnboardingRoot:
           Type: HttpApi
           Properties:
             ApiId: !Ref HrHttpApi
             Path: /onboarding
-            Method: ANY
+            Method: GET
         OnboardingProxy:
           Type: HttpApi
           Properties:
             ApiId: !Ref HrHttpApi
             Path: /onboarding/{proxy+}
-            Method: ANY
+            Method: GET
 
   PunchInOutFunction:
     Type: AWS::Serverless::Function
@@ -105,20 +127,20 @@ Resources:
       Description: Punch in and punch out API service.
       Environment:
         Variables:
-          API_BASE_PATH: /punch-in-out
+          API_BASE_PATH: /prod/punch-in-out
       Events:
         PunchInOutRoot:
           Type: HttpApi
           Properties:
             ApiId: !Ref HrHttpApi
             Path: /punch-in-out
-            Method: ANY
+            Method: GET
         PunchInOutProxy:
           Type: HttpApi
           Properties:
             ApiId: !Ref HrHttpApi
             Path: /punch-in-out/{proxy+}
-            Method: ANY
+            Method: GET
 
   SalaryManagementFunction:
     Type: AWS::Serverless::Function
@@ -128,20 +150,20 @@ Resources:
       Description: Salary management API service.
       Environment:
         Variables:
-          API_BASE_PATH: /salary-management
+          API_BASE_PATH: /prod/salary-management
       Events:
         SalaryManagementRoot:
           Type: HttpApi
           Properties:
             ApiId: !Ref HrHttpApi
             Path: /salary-management
-            Method: ANY
+            Method: GET
         SalaryManagementProxy:
           Type: HttpApi
           Properties:
             ApiId: !Ref HrHttpApi
             Path: /salary-management/{proxy+}
-            Method: ANY
+            Method: GET
 
 Outputs:
   HrHttpApiEndpoint:

@@ -25,6 +25,7 @@ MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "hr_management")
 DATABASE_URI = (
     f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}"
     f"@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}"
+    f"?ssl_verify_cert=false"
 )
 
 IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
